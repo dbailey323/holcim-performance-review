@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Year End Performance 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#06183A; --navy2:#0E2A5C; --green:#94C12E; --cyan:#04BBF1; --teal:#0B86B0;
+    --ink:#0B1B3A; --muted:#55627A; --line:#DFE5EE; --bg:#F3F5F9; --card:#FFFFFF;
+    --amber:#B86A00; --amberbg:#FFF6E3; --good:#2E7D32; --goodbg:#EAF6E6; --warnbg:#FDEFEA; --warn:#B23B1E;
+    --grad:linear-gradient(90deg,var(--green),var(--cyan));
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Montserrat,Arial,sans-serif;font-size:16px;line-height:1.55;font-style:normal}
+  em,i{font-style:normal}
+  .topbar{background:var(--navy);color:#fff;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .wordmark{font-weight:900;letter-spacing:.14em;font-size:18px}
+  .eyebrow{color:var(--cyan);font-weight:700;font-size:11px;letter-spacing:.16em;text-transform:uppercase;text-align:right}
+  .wrap{max-width:980px;margin:0 auto;padding:20px 16px 56px}
+  .hero{background:var(--navy);color:#fff;border-radius:20px;overflow:hidden;position:relative}
+  .hero::before{content:"";display:block;height:8px;background:var(--grad)}
+  .hero-in{padding:28px 24px 30px}
+  .hero h1{margin:0 0 12px;font-weight:900;text-transform:uppercase;font-size:clamp(28px,6vw,46px);line-height:1.05;letter-spacing:.01em}
+  .hero p{margin:0;max-width:640px;color:#D6DEEC;font-size:16px}
+  .status{display:inline-block;margin-top:18px;background:rgba(4,187,241,.14);border:1px solid var(--cyan);color:#fff;border-radius:999px;padding:8px 16px;font-weight:600;font-size:14px}
+  section{margin-top:40px}
+  h2{margin:0 0 6px;font-weight:900;text-transform:uppercase;font-size:clamp(20px,4.2vw,26px);line-height:1.15;color:var(--navy)}
+  h2::after{content:"";display:block;width:72px;height:6px;border-radius:3px;background:var(--grad);margin-top:10px}
+  .lead{color:var(--muted);margin:14px 0 18px;max-width:720px}
+  h3{margin:0 0 6px;font-size:17px;font-weight:800;color:var(--navy)}
+  p{margin:0 0 10px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+
+  /* timeline */
+  .dates{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 20px 20px;display:grid;grid-template-columns:repeat(4,1fr)}
+  .date{position:relative;padding:30px 14px 0 0}
+  .date::before{content:"";position:absolute;top:7px;left:0;right:0;height:3px;background:var(--line)}
+  .date:last-child::before{right:auto;width:17px}
+  .date::after{content:"";position:absolute;top:0;left:0;width:17px;height:17px;border-radius:50%;background:#fff;border:3px solid var(--navy);box-sizing:border-box}
+  .date.done::before{background:var(--green)}
+  .date.done::after{background:var(--green);border-color:var(--green)}
+  .date.next::after{background:var(--cyan);border-color:var(--cyan);box-shadow:0 0 0 5px rgba(4,187,241,.22)}
+  .date .wd{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .date .d{font-weight:900;font-size:19px;color:var(--navy);line-height:1.15}
+  .date .t{font-weight:700;font-size:14.5px;line-height:1.3;margin:8px 0 4px}
+  .date .s{font-size:13px;line-height:1.45;color:var(--muted);margin:0}
+  .date .tag{display:none;font-size:12px;font-weight:700;margin-top:8px}
+  .date.next .tag{display:block;color:var(--teal)}
+  .date.done .tag{display:block;color:var(--good)}
+
+  /* role toggle */
+  .toggle{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+  .btn{font-family:inherit;font-size:16px;font-weight:800;border:0;border-radius:12px;padding:14px 16px;cursor:pointer;color:#fff;text-align:center}
+  .btn small{display:block;font-weight:500;font-size:12.5px;opacity:.92;margin-top:2px}
+  .btn-col{background:#5E8A12}
+  .btn-mgr{background:var(--teal)}
+  .btn[aria-pressed="false"]{opacity:.45}
+  .btn:focus-visible,.opt:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
+  .steps{list-style:none;margin:0;padding:0;counter-reset:s}
+  .steps li{counter-increment:s;position:relative;padding:14px 0 14px 52px;border-bottom:1px solid var(--line)}
+  .steps li:last-child{border-bottom:0}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:14px;width:36px;height:36px;border-radius:50%;background:var(--navy);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .when{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);margin-bottom:2px}
+  .steps p{margin:0;color:#2A3855}
+
+  /* principles */
+  .three{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .three .card{border-top:6px solid var(--green)}
+  .three .card:nth-child(2){border-top-color:var(--cyan)}
+  .three .card:nth-child(3){border-top-color:var(--teal)}
+  .three p{font-size:15px;color:#2A3855;margin:0}
+
+  .scale{padding:4px 18px}
+  .rate{display:grid;grid-template-columns:210px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+  .rate:last-child{border-bottom:0}
+  .rate h3{margin:0;font-size:15px;border-left:6px solid var(--green);padding-left:10px;align-self:start}
+  .rate p{margin:0;font-size:14.5px;color:#2A3855}
+  @media (max-width:760px){.rate{grid-template-columns:1fr;gap:6px}}
+
+  .dist{display:grid;grid-template-columns:130px 1fr 44px;gap:12px;align-items:center;padding:7px 0;font-size:14.5px}
+  .dn{font-weight:700;color:var(--navy)}
+  .db{height:14px;background:#EEF1F6;border-radius:7px;overflow:hidden}
+  .db span{display:block;height:100%;min-width:6px;border-radius:7px;background:var(--grad)}
+  .dv{font-weight:800;text-align:right;color:var(--navy)}
+  @media (max-width:440px){.dist{grid-template-columns:104px 1fr 40px;gap:8px}}
+
+  /* tabs */
+  .tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:28px;scroll-margin-top:12px}
+  .tab-a{background:#5E8A12}.tab-b{background:var(--teal)}.tab-c{background:var(--navy)}
+  .tabs + section,.tabs ~ section.first{margin-top:28px}
+  .tabs .btn[aria-pressed="false"]{opacity:.62}
+  @media (max-width:600px){.tabs{grid-template-columns:1fr}}
+
+  /* scenarios */
+  .scn-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}
+  .count{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin-bottom:16px}
+  .bar span{display:block;height:100%;width:0;background:var(--grad);transition:width .25s}
+  .opt{display:block;width:100%;text-align:left;font-family:inherit;font-size:15px;line-height:1.45;background:#fff;color:var(--ink);border:2px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:10px;cursor:pointer}
+  .opt:hover{border-color:var(--cyan)}
+  .opt.right{border-color:var(--good);background:var(--goodbg)}
+  .opt.wrong{border-color:var(--warn);background:var(--warnbg)}
+  .opt[disabled]{cursor:default}
+  .fb{margin-top:14px;padding:14px;border-radius:12px;background:#EEF4FB;border-left:6px solid var(--cyan);font-size:15px}
+  .fb b{color:var(--navy)}
+  .btn-next{background:var(--navy);margin-top:14px;width:100%}
+
+  /* checklist */
+  .check{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line);cursor:pointer}
+  .check:last-of-type{border-bottom:0}
+  .check input{width:22px;height:22px;margin:2px 0 0;accent-color:#5E8A12;flex:none}
+  .ready{margin-top:12px;font-weight:700;color:var(--teal)}
+
+  /* faq */
+  details{background:#fff;border:1px solid var(--line);border-radius:12px;margin-top:10px}
+  summary{cursor:pointer;font-weight:700;padding:14px 16px;list-style:none;position:relative;padding-right:44px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";position:absolute;right:16px;top:10px;font-size:22px;font-weight:800;color:var(--teal)}
+  details[open] summary::after{content:"\2212"}
+  details p{padding:0 16px 14px;margin:0;color:#2A3855}
+
+  /* draft notes: set SHOW_DRAFT_NOTES to false in the script to hide them all */
+  .confirm{display:none;background:var(--amberbg);border:2px dashed var(--amber);border-radius:12px;padding:10px 14px;margin:12px 0;font-size:14px;color:#5A3A00}
+  .confirm b{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber)}
+  body.draft .confirm{display:block}
+
+  .foot{margin-top:40px;font-size:13px;color:var(--muted);text-align:center}
+  [hidden]{display:none !important}
+  @media (max-width:760px){
+    .dates{grid-template-columns:1fr;padding:20px 18px 4px}
+    .date{padding:0 0 20px 32px}
+    .date::before,.date:last-child::before{top:0;bottom:0;left:7px;right:auto;width:3px;height:auto}
+    .date:last-child::before{display:none}
+    .three{grid-template-columns:1fr}
+  }
+  @media (max-width:440px){
+    .toggle{grid-template-columns:1fr}
+    .eyebrow{font-size:10px}
+  }
+</style>
+</head>
+<body class="draft">
+
+<div class="topbar">
+  <div class="wordmark">HOLCIM</div>
+  <div class="eyebrow">Talent Hub &middot; Performance for managers</div>
+</div>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="hero-in">
+      <h1>Year end performance 2026</h1>
+      <p>The dates have moved this year, and the performance window opens on Monday 19th October. This page is for managers, and it takes you through what happens and when, what a good review rests on, and how to handle the moments that are hardest to get right.</p>
+      <div class="status" id="status">The performance window opens on Monday 19th October.</div>
+    </div>
+  </div>
+
+  <section>
+    <h2>The four dates to know</h2>
+    <p class="lead">Everything in this year's process works back from these four dates. The first three are yours to meet as a manager, and the last is the sign-off stage that follows.</p>
+    <div class="dates" id="dates"></div>
+  </section>
+
+  <div class="tabs" id="tabs" role="group" aria-label="Choose a section">
+    <button class="btn tab-a" data-go="process" aria-pressed="true">The process<small>Your six steps and common questions</small></button>
+    <button class="btn tab-b" data-go="ratings" aria-pressed="false">The ratings<small>What each rating means</small></button>
+    <button class="btn tab-c" data-go="practise" aria-pressed="false">Practise<small>Try rating and rehearse the conversation</small></button>
+  </div>
+
+  <section data-tab="process">
+    <h2>What you need to do</h2>
+    <p class="lead">These are the six steps for every manager, from gathering evidence through to sign-off in December.</p>
+
+    <div class="card" id="pMgr">
+      <ol class="steps">
+        <li><span class="when">Now</span>
+          <h3>Ask your team to start their self-assessment</h3>
+          <p>Each colleague assesses themselves against their objectives and gives their own view of their rating in SuccessFactors. Ask your team to start thinking about this now, so that it is submitted by the time they sit down with you. Point them to the rating descriptions so that they are working from the same definitions as you.</p></li>
+        <li><span class="when">From 19th October</span>
+          <h3>Gather evidence for each person in your team</h3>
+          <p>Review each colleague's objectives against what was delivered across the full year. Look for evidence of how they worked as well as what they achieved, and ask others who worked closely with them where you have gaps.</p></li>
+        <li><span class="when">19th October to 13th November</span>
+          <h3>Hold the performance conversation</h3>
+          <p>The colleague's self-assessment forms the basis of the conversation, so read it beforehand and form your own view from the evidence before you compare the two. Start with where you agree, then talk through where you differ and why. Share where you think they are, based on their objectives and their performance in the year, and be clear that this could change following calibration. Give each colleague proper time and a private space. Nothing you say should come as a surprise, so if it will, slow down and explain the evidence behind your view before you talk about anything else.</p></li>
+        <li><span class="when">By Friday 13th November</span>
+          <h3>Enter your proposed ratings in SuccessFactors</h3>
+          <p>Record a proposed rating for every colleague with a short, evidence-based rationale. This date is fixed, because calibration cannot start until every manager's ratings are in. Ratings also need to be in on time because they inform the annual pay review, which opens in January.</p></li>
+        <li><span class="when">16th to 27th November</span>
+          <h3>Calibrate with your peers</h3>
+          <p>Calibration runs for the two weeks after ratings close. It is led by your People Business Partner, starting at senior level and then moving to the next layer of managers. It looks at every colleague and not only the highest and lowest performers, so come ready to explain each rating and to change your mind when the evidence supports it. Once a rating has been calibrated, enter the agreed outcome for that colleague in SuccessFactors before calibration closes on 27th November.</p></li>
+        <li><span class="when">During December</span>
+          <h3>Treat ratings as provisional until sign-off</h3>
+          <p>The CEO signs off the final ratings on Friday 18th December. Until that has happened a rating can still change, so please do not share it with your colleague as final. Confirmed ratings are shared with colleagues after the CEO has signed them off.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section data-tab="ratings">
+    <h2>What a good review rests on</h2>
+    <p class="lead">The dates tell you when things have to happen. These three ideas are what make the review worth having.</p>
+    <div class="three">
+      <div class="card"><h3>The what and the how</h3><p>We look at what someone achieved and at how they achieved it. A strong result reached in a way that damaged safety, trust or teamwork is not a strong performance.</p></div>
+      <div class="card"><h3>Evidence from the whole year</h3><p>A rating should rest on examples from January to now, measured against the objectives that were agreed. It should not rest on the last six weeks or on a general impression.</p></div>
+      <div class="card"><h3>A conversation without surprises</h3><p>The year end conversation should bring together feedback the colleague has already heard. High challenge and high support both belong in the same conversation.</p></div>
+    </div>
+  </section>
+
+  <section data-tab="ratings">
+    <h2>The five ratings</h2>
+    <p class="lead">These are the five Holcim performance ratings and what each one means. Good Performance is the rating most colleagues receive, and it describes someone who meets and sometimes exceeds what their role and objectives ask of them.</p>
+    <div class="card scale">
+      <div class="rate"><h3>Outstanding Performance</h3><p>A colleague who sets ambitious targets and objectives and consistently goes beyond them. They are highly driven by results, have a strong growth mindset for the business and for themselves, and always look to contribute more. They challenge the status quo, bring others with them and help to build a high-performance culture. Others greatly value what they deliver and see them as a role model.</p></div>
+      <div class="rate"><h3>High Performance</h3><p>A colleague who consistently achieves challenging targets and objectives. They have a continuous improvement mindset and raise their own performance over time. They are reliable and resilient, perform consistently on new projects and assignments, and face new challenges with confidence. They challenge the status quo, drive change and collaborate strongly, and their contribution is well appreciated by others.</p></div>
+      <div class="rate"><h3>Good Performance</h3><p>A colleague who meets and sometimes exceeds the requirements of their role and their objectives. They are reliable, steady and competent, and they identify areas for improvement and act on them. They are able and willing to adapt to new situations, although the most demanding challenges may stretch them beyond their comfort zone. They bring good energy, drive and passion to the job and are well appreciated for their professionalism and competence.</p></div>
+      <div class="rate"><h3>Inconsistent Performance</h3><p>A colleague who has not always delivered on their objectives this year, with performance and results that have varied. Their effort, energy or drive has not consistently been at the level the role needs, and significant improvement is needed for them to be successful in it. It is worth exploring whether the role, the team or the environment is the right fit for them. A performance conversation and a clear plan of action are required.</p></div>
+      <div class="rate"><h3>New in the job</h3><p>A colleague who has been in their role for less than six months, so it is too soon to assess their performance.</p></div>
+    </div>
+    <div class="card" style="margin-top:12px">
+      <h3>The expected distribution</h3>
+      <p>Across the business we expect ratings to fall in a similar pattern to 2025. This is a guide for the business as a whole and is used in calibration, so it is not a quota for each team, and the evidence for each colleague comes first.</p>
+      <div class="dist"><span class="dn">Outstanding</span><span class="db"><span style="width:2%"></span></span><span class="dv">2%</span></div>
+      <div class="dist"><span class="dn">High</span><span class="db"><span style="width:25%"></span></span><span class="dv">25%</span></div>
+      <div class="dist"><span class="dn">Good</span><span class="db"><span style="width:66%"></span></span><span class="dv">66%</span></div>
+      <div class="dist"><span class="dn">Inconsistent</span><span class="db"><span style="width:2%"></span></span><span class="dv">2%</span></div>
+      <div class="dist"><span class="dn">New in the job</span><span class="db"><span style="width:5%"></span></span><span class="dv">5%</span></div>
+    </div>
+    <button class="btn btn-next" data-go="practise">Next: practise</button>
+  </section>
+
+  <section data-tab="practise">
+    <h2>Practise rating</h2>
+    <p class="lead">Here are four fictional colleagues. Read each summary, choose the rating you would propose, and then compare it with the reference rating and the reasoning behind it.</p>
+    <div class="card">
+      <div class="scn-head"><h3 id="rTitle"></h3><span class="count" id="rCount"></span></div>
+      <div class="bar"><span id="rBar"></span></div>
+      <p id="rText"></p>
+      <div id="rOpts"></div>
+      <div class="fb" id="rFb" hidden></div>
+      <button class="btn btn-next" id="rNext" hidden>Next</button>
+    </div>
+  </section>
+
+  <section data-tab="practise">
+    <h2>Rehearse the conversation</h2>
+    <p class="lead">Sam has delivered a solid year and has self-assessed as High Performance in SuccessFactors. Your evidence points to Good Performance. Choose what you would say at each of the three points in the conversation and see how Sam responds.</p>
+    <div class="card">
+      <div class="scn-head"><h3 id="cTitle"></h3><span class="count" id="cCount"></span></div>
+      <div class="bar"><span id="cBar"></span></div>
+      <p id="cText"></p>
+      <div id="cOpts"></div>
+      <div class="fb" id="cFb" hidden></div>
+      <button class="btn btn-next" id="cNext" hidden>Next</button>
+    </div>
+  </section>
+
+  <section data-tab="practise">
+    <h2>Practise the hard moments</h2>
+    <p class="lead">These are five situations that managers tell us are the hardest to handle well. Choose the response you think is best and see how it compares.</p>
+    <div class="card">
+      <div class="scn-head"><h3 id="sTitle"></h3><span class="count" id="sCount"></span></div>
+      <div class="bar"><span id="sBar"></span></div>
+      <p id="sText"></p>
+      <div id="sOpts"></div>
+      <div class="fb" id="sFb" hidden></div>
+      <button class="btn btn-next" id="sNext" hidden>Next situation</button>
+    </div>
+  </section>
+
+  <section data-tab="practise">
+    <h2>Am I ready for calibration?</h2>
+    <p class="lead">Tick each statement that is true for you. If you can tick all six, you are ready to walk into the room.</p>
+    <div class="card">
+      <label class="check"><input type="checkbox"><span>I have had a performance conversation with every colleague in my team.</span></label>
+      <label class="check"><input type="checkbox"><span>I can give two or three specific examples behind each rating I am proposing.</span></label>
+      <label class="check"><input type="checkbox"><span>My examples cover the whole year and not just the most recent months.</span></label>
+      <label class="check"><input type="checkbox"><span>I have considered how each person delivered as well as what they delivered.</span></label>
+      <label class="check"><input type="checkbox"><span>I have looked at my ratings as a set and asked whether I am being too generous or too harsh.</span></label>
+      <label class="check"><input type="checkbox"><span>My proposed ratings were entered in SuccessFactors by 13th November.</span></label>
+      <div class="ready" id="ready">You have ticked 0 of 6.</div>
+    </div>
+  </section>
+
+  <section data-tab="process">
+    <h2>Questions people ask</h2>
+    <details><summary>Why have the dates moved this year?</summary>
+      <p>We have brought the process forward so that it is complete before the year end. That means we can go into 2027 with our focus on setting and delivering the objectives for the year ahead, and with ratings already in place for the annual pay review in January. The performance window opens on 19th October, manager ratings close on 13th November and calibration finishes on 27th November.</p></details>
+    <details><summary>How do I rate a year that has not finished yet?</summary>
+      <p>By this point in the year you should have a very good indication of how each colleague has performed, so rate on the evidence you have. A rating reflects the whole year, and one piece of work finishing in December rarely changes that picture.</p></details>
+    <details><summary>What is calibration for?</summary>
+      <p>Calibration brings managers together to compare ratings so that the same standard applies whichever team a colleague works in. It covers all colleagues, and its purpose is fairness and consistency.</p></details>
+    <details><summary>Can a rating change after I have entered it?</summary>
+      <p>Yes, it can. Ratings can move during calibration and remain provisional until the sign-off stages are complete, which is why they should not be shared as final before then.</p></details>
+    <details><summary>Who can help me?</summary>
+      <p>Your People Business Partner is your first point of contact for questions about the process, a difficult conversation or a rating you are unsure about.</p></details>
+    <button class="btn btn-next" data-go="ratings">Next: the ratings</button>
+  </section>
+
+  <div class="foot">Holcim UK People team. Year end performance 2026.</div>
+</div>
+
+<script>
+/* ============================ CONFIG ============================
+   Only edit this block when dates or wording change.
+   Set SHOW_DRAFT_NOTES to false to hide every amber "To confirm" note. */
+var SHOW_DRAFT_NOTES = false;
+var MILESTONES = [
+  { date: [2026, 10, 19], title: "The performance window opens",
+    text: "Colleagues and managers hold their performance conversations from now until 13th November." },
+  { date: [2026, 11, 13], title: "Manager ratings entered",
+    text: "Conversations are complete and managers have entered a proposed rating for every colleague." },
+  { date: [2026, 11, 27], title: "Calibration complete",
+    text: "Calibration has finished and managers have entered the agreed outcome for each colleague in SuccessFactors." },
+  { date: [2026, 12, 18], title: "CEO sign-off",
+    text: "The CEO signs off the final ratings, and confirmed ratings are then shared with colleagues." }
+];
+/* ========================== END CONFIG ========================== */
+
+if (!SHOW_DRAFT_NOTES) document.body.classList.remove("draft");
+
+var DAYS = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+var MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+function toDate(a){ return new Date(a[0], a[1]-1, a[2]); }
+function daysTo(d){ var n = new Date(); n.setHours(0,0,0,0); return Math.round((d - n) / 86400000); }
+function ord(n){ var v = n % 100, e = (v > 10 && v < 14) ? 'th' : (['th','st','nd','rd'][n % 10] || 'th'); return n + e; }
+function plural(n){ return n === 1 ? "1 day" : n + " days"; }
+
+(function renderDates(){
+  var box = document.getElementById("dates"), nextSet = false, html = "";
+  MILESTONES.forEach(function(m){
+    var d = toDate(m.date), left = daysTo(d), cls = "date", tag = "";
+    if (left < 0) { cls += " done"; tag = "Passed"; }
+    else if (!nextSet) { cls += " next"; tag = left === 0 ? "Today" : "In " + plural(left); nextSet = true; }
+    html += '<div class="' + cls + '">' +
+            '<div class="wd">' + DAYS[d.getDay()] + '</div>' +
+            '<div class="d">' + ord(d.getDate()) + ' ' + MONTHS[d.getMonth()] + '</div>' +
+            '<div class="t">' + m.title + '</div><p class="s">' + m.text + '</p>' +
+            '<div class="tag">' + tag + '</div></div>';
+  });
+  box.innerHTML = html;
+
+  var a = daysTo(toDate(MILESTONES[0].date)), b = daysTo(toDate(MILESTONES[1].date)),
+      cal = daysTo(toDate(MILESTONES[2].date)),
+      c = daysTo(toDate(MILESTONES[3].date)), s;
+  if (a > 0) s = "The window opens in " + plural(a) + ", on Monday 19th October.";
+  else if (b >= 0) s = "The window is open, and managers have " + plural(b) + " left to enter their ratings.";
+  else if (cal >= 0) s = "Manager ratings have closed, and calibration runs until Friday 27th November.";
+  else if (c >= 0) s = "Calibration is complete, and final ratings are being prepared for CEO sign-off on 18th December.";
+  else s = "The CEO has signed off the final ratings, and confirmed ratings are being shared with colleagues.";
+  document.getElementById("status").textContent = s;
+})();
+
+/* scenarios */
+var SCENARIOS = [
+  { title: "The year is not finished",
+    text: "It is early November and one of your team has a major project that does not land until the week before Christmas. You need to enter their rating by 13th November.",
+    opts: [
+      ["Hold the rating back until the project has landed, even though that means missing the 13th November date.", false],
+      ["Rate on the evidence you have from the year so far, because it already gives you a very good indication of their performance.", true],
+      ["Assume the project will go well and rate as though it has already been delivered.", false]
+    ],
+    fb: "By this point in the year you should have a very good indication of how someone has performed. A rating reflects the whole year, so one piece of work finishing in December rarely changes the picture." },
+  { title: "A great result, achieved the wrong way",
+    text: "A colleague has beaten every target this year. Along the way two team members asked to move, and a peer has raised concerns about how they were spoken to.",
+    opts: [
+      ["Give the top rating, because the numbers speak for themselves.", false],
+      ["Give a low rating, because behaviour matters more than results.", false],
+      ["Weigh the results and the behaviour together, and be specific with the colleague about both.", true]
+    ],
+    fb: "We look at what was achieved and at how it was achieved. Neither one cancels the other out, so the rating and the conversation need to reflect both, with clear examples of each." },
+  { title: "A year of two halves",
+    text: "A colleague struggled badly in the first half of the year and missed two key objectives. Since September they have been outstanding and the team has noticed.",
+    opts: [
+      ["Rate on the recent months, because that is the performance you are seeing now.", false],
+      ["Rate on the first half, because the objectives were missed and that is a fact.", false],
+      ["Rate the year as a whole, and recognise the improvement clearly in the conversation.", true]
+    ],
+    fb: "The most recent months are the easiest to remember, which is why they tend to carry too much weight. The rating covers the whole year, and the conversation is where you recognise the turnaround and build on it." },
+  { title: "Your rating is challenged in calibration",
+    text: "In calibration another manager questions a high rating you have given. They work closely with your colleague and have seen something different from you.",
+    opts: [
+      ["Defend the rating firmly, because you know your own team best.", false],
+      ["Share your examples, listen to theirs, and be willing to move if the evidence supports it.", true],
+      ["Lower the rating straight away to keep the session moving.", false]
+    ],
+    fb: "Calibration works when managers bring evidence and stay open to other views. Holding your position without evidence and giving way without discussion both lead to a less fair outcome." },
+  { title: "Asked for the final rating",
+    text: "At the end of a good conversation in early November your colleague asks you directly what rating they are going to get.",
+    opts: [
+      ["Tell them their rating as though it is already settled, so that you are being transparent.", false],
+      ["Say that you cannot discuss ratings at all and move the conversation on.", false],
+      ["Share where you think they are, based on their objectives and performance this year, and explain that it could change following calibration.", true]
+    ],
+    fb: "Your colleague should leave the conversation knowing where you think they are and why. What you cannot give them yet is a confirmed rating, because it could change following calibration and is only shared once the CEO has signed it off." }
+];
+(function(){
+  var i = 0, score = 0;
+  var T = document.getElementById("sTitle"), C = document.getElementById("sCount"), B = document.getElementById("sBar"),
+      X = document.getElementById("sText"), O = document.getElementById("sOpts"), F = document.getElementById("sFb"),
+      N = document.getElementById("sNext");
+  function render(){
+    if (i >= SCENARIOS.length) {
+      T.textContent = "You have worked through all five";
+      C.textContent = "Complete"; B.style.width = "100%";
+      X.textContent = "You chose the strongest response in " + score + " of " + SCENARIOS.length + " situations. The thread running through all of them is the same: rate on evidence from the whole year, weigh the what and the how together, and be honest with your colleague throughout.";
+      O.innerHTML = ""; F.hidden = true; N.hidden = false; N.textContent = "Start again";
+      return;
+    }
+    var s = SCENARIOS[i];
+    T.textContent = s.title; X.textContent = s.text;
+    C.textContent = (i + 1) + " of " + SCENARIOS.length;
+    B.style.width = (i / SCENARIOS.length * 100) + "%";
+    O.innerHTML = ""; F.hidden = true; N.hidden = true;
+    s.opts.forEach(function(o){
+      var b = document.createElement("button");
+      b.className = "opt"; b.textContent = o[0];
+      b.onclick = function(){
+        var all = O.querySelectorAll(".opt");
+        for (var k = 0; k < all.length; k++) { all[k].disabled = true; if (s.opts[k][1]) all[k].classList.add("right"); }
+        if (o[1]) score++; else b.classList.add("wrong");
+        F.innerHTML = "<b>" + (o[1] ? "That is the strongest response. " : "There is a stronger response, shown in green. ") + "</b>" + s.fb;
+        F.hidden = false; N.hidden = false;
+        N.textContent = i === SCENARIOS.length - 1 ? "See how you did" : "Next situation";
+      };
+      O.appendChild(b);
+    });
+  }
+  N.onclick = function(){ if (i >= SCENARIOS.length) { i = 0; score = 0; } else { i++; } render(); };
+  render();
+})();
+
+/* rating practice and conversation rehearsal */
+var RATINGS = ["Outstanding Performance","High Performance","Good Performance","Inconsistent Performance","New in the job"];
+function rate(i){ return RATINGS.map(function(r, k){ return [r, k === i]; }); }
+var RATE_CASES = [
+  { title: "Sarah, Site Supervisor", answer: 2,
+    text: "Sarah delivered all five of her objectives this year, and two of them slightly ahead of plan. Her team describe her as dependable, and she acted on feedback about delegating more. She found the move to the new scheduling system difficult at first and needed support before she was comfortable with it.",
+    fb: "Sarah meets and sometimes exceeds what her role and objectives ask, she is reliable and she acts on feedback. The new system stretched her beyond her comfort zone, which is exactly what the Good Performance description allows for. High Performance would need her to achieve challenging targets consistently and to face new challenges with confidence." },
+  { title: "Mark, Area Sales Manager", answer: 1,
+    text: "Mark hit every one of his stretching targets, including in a new territory he took on in the middle of the year. His results are better than last year. He redesigned how his team prepares quotes, and two other areas have since adopted the approach. His peers say he is easy to work with.",
+    fb: "Mark consistently achieves challenging targets, has raised his own performance, performed well in a new assignment and drove a change that others picked up. That is the High Performance description. Outstanding Performance would need him to overachieve ambitious targets consistently and to be seen as a role model across the organisation." },
+  { title: "Dan, Maintenance Technician", answer: 3,
+    text: "Dan had a strong first quarter and has been excellent since September. Across the year he missed two of his four objectives, the quality of his work varied and his supervisor had to follow up on several jobs. He is well liked by the team.",
+    fb: "Across the whole year Dan did not always deliver on his objectives and his results varied, which is what Inconsistent Performance describes. His recent improvement is real and should be recognised in the conversation, but the rating covers January to now. Being well liked is not evidence of performance." },
+  { title: "Emma, Logistics Planner", answer: 4,
+    text: "Emma joined the business in July and has made a very promising start. She has picked up the role quickly, is already delivering against her first objectives and has had good feedback from the sites she supports.",
+    fb: "Emma has been in her role for less than six months, so it is too soon to assess her performance, however promising the start. New in the job is a neutral rating and says nothing negative about her. The conversation is the place to tell her how well she has begun." }
+];
+var CONVO = [
+  { title: "Opening the conversation",
+    text: "Sam says: I have put myself down as High. I have hit everything I was asked to do this year.",
+    opts: [
+      ["I have you as Good, so let us talk about why you have put High.", false,
+       "Sam goes quiet and starts defending the rating. Leading with your label turns the conversation into a negotiation before you have heard Sam's evidence."],
+      ["Talk me through what you are most proud of this year, and what led you to High.", true,
+       "Sam relaxes and walks you through the year. Starting from the self-assessment shows you have taken it seriously, and it gives you Sam's evidence to work with."],
+      ["That looks about right to me. Let us see what calibration says.", false,
+       "Sam leaves expecting High. Avoiding the difference now only moves the difficult conversation to December, when it will feel like a downgrade."]
+    ] },
+  { title: "Explaining the difference",
+    text: "Sam says: So you agree it has been a strong year. Why is that not High?",
+    opts: [
+      ["To be honest it is the distribution. Most people have to come out as Good.", false,
+       "Sam hears that the rating is about quotas and not about the work. The expected distribution is a guide for the business, and it is never the reason for one person's rating."],
+      ["You delivered all of your objectives well, and that is what Good describes. High is about consistently achieving challenging targets and driving change, and here are two examples where I saw less of that.", true,
+       "Sam does not love it, but can see where the view comes from. Using the rating descriptions and specific examples keeps the conversation on evidence."],
+      ["High is really for people who go above and beyond.", false,
+       "Sam replies that this is exactly what the year has felt like. A vague standard gives Sam nothing to test the rating against and nothing to aim for."]
+    ] },
+  { title: "Responding to disappointment",
+    text: "Sam says: Good feels like a let-down. I have worked harder than ever this year.",
+    opts: [
+      ["Leave it with me. I will see whether I can get it moved up in calibration.", false,
+       "Sam now expects High. Promising to change a rating you believe is right undermines your own judgement and sets up a second disappointment."],
+      ["I understand, but that is my view and it is unlikely to change.", false,
+       "Sam shuts down. The view may well be right, but closing the conversation here loses the chance to talk about what comes next."],
+      ["I can hear that, and the effort has been real. Good is a strong year and it is where most colleagues land. This is where I think you are, it could change following calibration, and I would like us to agree what would make next year a High.", true,
+       "Sam is still disappointed, but leaves knowing where things stand and what to work on. You have acknowledged the effort, been honest about the rating and the calibration caveat, and turned to the future."]
+    ] }
+];
+function runQuiz(x, items, cfg){
+  var i = 0, score = 0, $ = function(k){ return document.getElementById(x + k); };
+  var T = $("Title"), C = $("Count"), B = $("Bar"), X = $("Text"), O = $("Opts"), F = $("Fb"), N = $("Next");
+  function render(){
+    if (i >= items.length) {
+      T.textContent = cfg.endTitle; C.textContent = "Complete"; B.style.width = "100%";
+      X.textContent = cfg.endText(score, items.length);
+      O.innerHTML = ""; F.hidden = true; N.hidden = false; N.textContent = "Start again";
+      return;
+    }
+    var it = items[i];
+    T.textContent = it.title; X.textContent = it.text;
+    C.textContent = (i + 1) + " of " + items.length;
+    B.style.width = (i / items.length * 100) + "%";
+    O.innerHTML = ""; F.hidden = true; N.hidden = true;
+    it.opts.forEach(function(o){
+      var b = document.createElement("button");
+      b.className = "opt"; b.textContent = o[0];
+      b.onclick = function(){
+        var all = O.querySelectorAll(".opt");
+        for (var k = 0; k < all.length; k++) { all[k].disabled = true; if (it.opts[k][1]) all[k].classList.add("right"); }
+        if (o[1]) score++; else b.classList.add("wrong");
+        F.innerHTML = "<b>" + (o[1] ? cfg.right : cfg.wrong(it)) + " </b>" + (o[2] || it.fb);
+        F.hidden = false; N.hidden = false;
+        N.textContent = i === items.length - 1 ? "See how you did" : cfg.next;
+      };
+      O.appendChild(b);
+    });
+  }
+  N.onclick = function(){ if (i >= items.length) { i = 0; score = 0; } else { i++; } render(); };
+  render();
+}
+RATE_CASES.forEach(function(c){ c.opts = rate(c.answer); });
+runQuiz("r", RATE_CASES, {
+  right: "That matches the reference rating.",
+  wrong: function(it){ return "The reference rating is " + RATINGS[it.answer] + "."; },
+  next: "Next colleague", endTitle: "You have rated all four",
+  endText: function(s, n){ return "You matched the reference rating for " + s + " of " + n + " colleagues. The reference ratings are a guide to how the descriptions apply, and in real life your rating rests on the evidence you hold and is tested in calibration."; }
+});
+runQuiz("c", CONVO, {
+  right: "That is the strongest response.",
+  wrong: function(){ return "There is a stronger response, shown in green."; },
+  next: "Continue the conversation", endTitle: "The conversation is finished",
+  endText: function(s, n){ return "You chose the strongest response at " + s + " of " + n + " points. The pattern that works is to start from the colleague's self-assessment, explain the difference using the rating descriptions and specific examples, and be honest that your view could change following calibration."; }
+});
+
+/* tabs */
+(function(){
+  var secs = document.querySelectorAll("section[data-tab]"), btns = document.querySelectorAll("#tabs .btn");
+  function show(t, scroll){
+    for (var i = 0; i < secs.length; i++) secs[i].hidden = secs[i].getAttribute("data-tab") !== t;
+    for (var j = 0; j < btns.length; j++) btns[j].setAttribute("aria-pressed", btns[j].getAttribute("data-go") === t ? "true" : "false");
+    if (scroll) document.getElementById("tabs").scrollIntoView({ block: "start" });
+  }
+  var go = document.querySelectorAll("[data-go]");
+  for (var k = 0; k < go.length; k++) (function(b){
+    b.onclick = function(){ show(b.getAttribute("data-go"), !b.parentNode.id); };
+  })(go[k]);
+  show("process", false);
+})();
+
+/* checklist */
+(function(){
+  var boxes = document.querySelectorAll(".check input"), out = document.getElementById("ready");
+  function upd(){
+    var n = 0; for (var k = 0; k < boxes.length; k++) if (boxes[k].checked) n++;
+    out.textContent = n === boxes.length ? "You have ticked all 6, so you are ready for calibration."
+                                         : "You have ticked " + n + " of " + boxes.length + ".";
+  }
+  for (var k = 0; k < boxes.length; k++) boxes[k].onchange = upd;
+})();
+</script>
+</body>
+</html>
