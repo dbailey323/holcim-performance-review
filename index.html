@@ -26,12 +26,12 @@
   .hero::before{content:"";display:block;height:8px;background:var(--grad)}
   .hero-in{padding:28px 24px 30px}
   .hero h1{margin:0 0 12px;font-weight:900;text-transform:uppercase;font-size:clamp(28px,6vw,46px);line-height:1.05;letter-spacing:.01em}
-  .hero p{margin:0;max-width:640px;color:#D6DEEC;font-size:16px}
+  .hero p{margin:0;max-width:760px;color:#D6DEEC;font-size:16px}
   .status{display:inline-block;margin-top:18px;background:rgba(4,187,241,.14);border:1px solid var(--cyan);color:#fff;border-radius:999px;padding:8px 16px;font-weight:600;font-size:14px}
   section{margin-top:40px}
   h2{margin:0 0 6px;font-weight:900;text-transform:uppercase;font-size:clamp(20px,4.2vw,26px);line-height:1.15;color:var(--navy)}
   h2::after{content:"";display:block;width:72px;height:6px;border-radius:3px;background:var(--grad);margin-top:10px}
-  .lead{color:var(--muted);margin:14px 0 18px;max-width:720px}
+  .lead{color:var(--muted);margin:14px 0 18px}
   h3{margin:0 0 6px;font-size:17px;font-weight:800;color:var(--navy)}
   p{margin:0 0 10px}
   .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
@@ -193,7 +193,7 @@
           <p>Record a proposed rating for every colleague with a short, evidence-based rationale. This date is fixed, because calibration cannot start until every manager's ratings are in. Ratings also need to be in on time because they inform the annual pay review, which opens in January.</p></li>
         <li><span class="when">16th to 27th November</span>
           <h3>Calibrate with your peers</h3>
-          <p>Calibration runs for the two weeks after ratings close. It is led by your People Business Partner, starting at senior level and then moving to the next layer of managers. It looks at every colleague and not only the highest and lowest performers, so come ready to explain each rating and to change your mind when the evidence supports it. Once a rating has been calibrated, enter the agreed outcome for that colleague in SuccessFactors before calibration closes on 27th November.</p></li>
+          <p>Calibration runs for the two weeks after ratings close. It starts at senior level and then moves to the next layer of managers. It looks at every colleague and not only the highest and lowest performers, so bring clear evidence to support your ratings and be open to changing your mind as you discuss the ratings. Once a rating has been calibrated, enter the agreed outcome for that colleague in SuccessFactors before calibration closes on 27th November.</p></li>
         <li><span class="when">During December</span>
           <h3>Treat ratings as provisional until sign-off</h3>
           <p>The CEO signs off the final ratings on Friday 18th December. Until that has happened a rating can still change, so please do not share it with your colleague as final. Confirmed ratings are shared with colleagues after the CEO has signed them off.</p></li>
@@ -213,7 +213,7 @@
 
   <section data-tab="ratings">
     <h2>The five ratings</h2>
-    <p class="lead">These are the five Holcim performance ratings and what each one means. Good Performance is the rating most colleagues receive, and it describes someone who meets and sometimes exceeds what their role and objectives ask of them.</p>
+    <p class="lead">Each colleague receives one of five ratings at the end of the year. Use the descriptions here to decide which one best reflects the evidence you have for each person. Good Performance is typically the rating most colleagues receive, and it describes someone who meets and sometimes exceeds what their role and objectives ask of them.</p>
     <div class="card scale">
       <div class="rate"><h3>Outstanding Performance</h3><p>A colleague who sets ambitious targets and objectives and consistently goes beyond them. They are highly driven by results, have a strong growth mindset for the business and for themselves, and always look to contribute more. They challenge the status quo, bring others with them and help to build a high-performance culture. Others greatly value what they deliver and see them as a role model.</p></div>
       <div class="rate"><h3>High Performance</h3><p>A colleague who consistently achieves challenging targets and objectives. They have a continuous improvement mindset and raise their own performance over time. They are reliable and resilient, perform consistently on new projects and assignments, and face new challenges with confidence. They challenge the status quo, drive change and collaborate strongly, and their contribution is well appreciated by others.</p></div>
@@ -222,8 +222,8 @@
       <div class="rate"><h3>New in the job</h3><p>A colleague who has been in their role for less than six months, so it is too soon to assess their performance.</p></div>
     </div>
     <div class="card" style="margin-top:12px">
-      <h3>The expected distribution</h3>
-      <p>Across the business we expect ratings to fall in a similar pattern to 2025. This is a guide for the business as a whole and is used in calibration, so it is not a quota for each team, and the evidence for each colleague comes first.</p>
+      <h3>How ratings are typically distributed</h3>
+      <p>Across the business, ratings typically fall in the pattern shown here. This is a guide for the business as a whole and is used in calibration, so it is not a quota for each team, and the evidence for each colleague comes first.</p>
       <div class="dist"><span class="dn">Outstanding</span><span class="db"><span style="width:2%"></span></span><span class="dv">2%</span></div>
       <div class="dist"><span class="dn">High</span><span class="db"><span style="width:25%"></span></span><span class="dv">25%</span></div>
       <div class="dist"><span class="dn">Good</span><span class="db"><span style="width:66%"></span></span><span class="dv">66%</span></div>
@@ -442,8 +442,8 @@ var RATE_CASES = [
     text: "Sarah delivered all five of her objectives this year, and two of them slightly ahead of plan. Her team describe her as dependable, and she acted on feedback about delegating more. She found the move to the new scheduling system difficult at first and needed support before she was comfortable with it.",
     fb: "Sarah meets and sometimes exceeds what her role and objectives ask, she is reliable and she acts on feedback. The new system stretched her beyond her comfort zone, which is exactly what the Good Performance description allows for. High Performance would need her to achieve challenging targets consistently and to face new challenges with confidence." },
   { title: "Mark, Area Sales Manager", answer: 1,
-    text: "Mark hit every one of his stretching targets, including in a new territory he took on in the middle of the year. His results are better than last year. He redesigned how his team prepares quotes, and two other areas have since adopted the approach. His peers say he is easy to work with.",
-    fb: "Mark consistently achieves challenging targets, has raised his own performance, performed well in a new assignment and drove a change that others picked up. That is the High Performance description. Outstanding Performance would need him to overachieve ambitious targets consistently and to be seen as a role model across the organisation." },
+    text: "Mark hit every one of his stretching targets and beat three of them by a clear margin, including in a new territory he took on in the middle of the year. His results are better than last year. He redesigned how his team prepares quotes, and two other areas have since adopted the approach. His peers say he is easy to work with.",
+    fb: "Mark consistently achieves challenging targets and has exceeded several of them, has raised his own performance, performed well in a new assignment and drove a change that others picked up. That is the High Performance description. Outstanding Performance would need him to overachieve ambitious targets consistently and to be seen as a role model across the organisation." },
   { title: "Dan, Maintenance Technician", answer: 3,
     text: "Dan had a strong first quarter and has been excellent since September. Across the year he missed two of his four objectives, the quality of his work varied and his supervisor had to follow up on several jobs. He is well liked by the team.",
     fb: "Across the whole year Dan did not always deliver on his objectives and his results varied, which is what Inconsistent Performance describes. His recent improvement is real and should be recognised in the conversation, but the rating covers January to now. Being well liked is not evidence of performance." },
@@ -466,7 +466,7 @@ var CONVO = [
     text: "Sam says: So you agree it has been a strong year. Why is that not High?",
     opts: [
       ["To be honest it is the distribution. Most people have to come out as Good.", false,
-       "Sam hears that the rating is about quotas and not about the work. The expected distribution is a guide for the business, and it is never the reason for one person's rating."],
+       "Sam hears that the rating is about quotas and not about the work. The typical distribution is a guide for the business, and it is never the reason for one person's rating."],
       ["You delivered all of your objectives well, and that is what Good describes. High is about consistently achieving challenging targets and driving change, and here are two examples where I saw less of that.", true,
        "Sam does not love it, but can see where the view comes from. Using the rating descriptions and specific examples keeps the conversation on evidence."],
       ["High is really for people who go above and beyond.", false,
